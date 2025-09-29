@@ -1,0 +1,217 @@
+<html><head><meta charset='utf-8'><title>FI Summary</title></head><body>
+<h1>Fault Injection Summary</h1>
+<table border='1' cellpadding='6'><tr><th>Spec</th><th>Total</th><th>Pass</th><th>Incorrect</th><th>Exception</th></tr>
+<tr><td>1-bit-flip</td><td>100</td><td>0</td><td>83</td><td>17</td></tr>
+<tr><td>2-bit-flip</td><td>100</td><td>2</td><td>67</td><td>31</td></tr>
+<tr><td>stuck-zero-at-5</td><td>100</td><td>0</td><td>0</td><td>100</td></tr>
+<tr><td>corrupt-range-3</td><td>100</td><td>0</td><td>2</td><td>98</td></tr>
+<tr><td>null-input</td><td>100</td><td>0</td><td>0</td><td>100</td></tr>
+<tr><td>timing-delay</td><td>100</td><td>100</td><td>0</td><td>0</td></tr>
+<tr><td>forced-exception</td><td>100</td><td>0</td><td>0</td><td>100</td></tr>
+</table><h2>Examples (up to 5 per spec)</h2>
+<h3>1-bit-flip</h3><ul>
+<li>seed=239081663 outcome=exception exception=Traceback (most recent call last):
+  File &quot;/home/hafizzuddin/github_repo/security_portfolio/02-simulations/fault_injector.py&quot;, line 150, in run_trials
+    out = self.target_fn(injected_input)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &quot;/home/hafizzuddin/github_repo/security_portfolio/02-simulations/fault_injector.py&quot;, line 31, in process_packet
+    raise ValueError(&quot;non-printable byte detected&quot;)
+ValueError: non-printable byte detected
+ input_b64=</li>
+<li>seed=53710184 outcome=incorrect exception= input_b64=SCVsbG8sIHRoaXMgaXMgYmFzZWxpbmUgZGF0YSAxMjM0NTY3ODkw...</li>
+<li>seed=590620971 outcome=incorrect exception= input_b64=SGVsbG8sIHRoaXMgaXMgYmFzZWxpbmUgZGF0YSAxMjM0NTYzODkw...</li>
+<li>seed=525901256 outcome=incorrect exception= input_b64=SGVsbG8sIHRoaXMgaXMgYmFzZW5pbmUgZGF0YSAxMjM0NTY3ODkw...</li>
+<li>seed=479341423 outcome=incorrect exception= input_b64=SGVsbG8sIHRoaXIgaXMgYmFzZWxpbmUgZGF0YSAxMjM0NTY3ODkw...</li>
+</ul>
+<h3>2-bit-flip</h3><ul>
+<li>seed=819521169 outcome=incorrect exception= input_b64=SGVsbG8tIHRoaXMgaXMgYmFzZWxpbmUgZGF0YSAxMjM0JTY3ODkw...</li>
+<li>seed=1005129473 outcome=incorrect exception= input_b64=SGVsbG8sIHRoaXMgaXsgYmFzZWxpbmUgZGF0aSAxMjM0NTY3ODkw...</li>
+<li>seed=539907702 outcome=incorrect exception= input_b64=SGVsbG8sIHRoeXMgaXMgYmEzZWxpbmUgZGF0YSAxMjM0NTY3ODkw...</li>
+<li>seed=24655304 outcome=exception exception=Traceback (most recent call last):
+  File &quot;/home/hafizzuddin/github_repo/security_portfolio/02-simulations/fault_injector.py&quot;, line 150, in run_trials
+    out = self.target_fn(injected_input)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &quot;/home/hafizzuddin/github_repo/security_portfolio/02-simulations/fault_injector.py&quot;, line 31, in process_packet
+    raise ValueError(&quot;non-printable byte detected&quot;)
+ValueError: non-printable byte detected
+ input_b64=</li>
+<li>seed=245997989 outcome=exception exception=Traceback (most recent call last):
+  File &quot;/home/hafizzuddin/github_repo/security_portfolio/02-simulations/fault_injector.py&quot;, line 150, in run_trials
+    out = self.target_fn(injected_input)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &quot;/home/hafizzuddin/github_repo/security_portfolio/02-simulations/fault_injector.py&quot;, line 31, in process_packet
+    raise ValueError(&quot;non-printable byte detected&quot;)
+ValueError: non-printable byte detected
+ input_b64=</li>
+</ul>
+<h3>stuck-zero-at-5</h3><ul>
+<li>seed=108637612 outcome=exception exception=Traceback (most recent call last):
+  File &quot;/home/hafizzuddin/github_repo/security_portfolio/02-simulations/fault_injector.py&quot;, line 150, in run_trials
+    out = self.target_fn(injected_input)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &quot;/home/hafizzuddin/github_repo/security_portfolio/02-simulations/fault_injector.py&quot;, line 31, in process_packet
+    raise ValueError(&quot;non-printable byte detected&quot;)
+ValueError: non-printable byte detected
+ input_b64=</li>
+<li>seed=31692244 outcome=exception exception=Traceback (most recent call last):
+  File &quot;/home/hafizzuddin/github_repo/security_portfolio/02-simulations/fault_injector.py&quot;, line 150, in run_trials
+    out = self.target_fn(injected_input)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &quot;/home/hafizzuddin/github_repo/security_portfolio/02-simulations/fault_injector.py&quot;, line 31, in process_packet
+    raise ValueError(&quot;non-printable byte detected&quot;)
+ValueError: non-printable byte detected
+ input_b64=</li>
+<li>seed=200280283 outcome=exception exception=Traceback (most recent call last):
+  File &quot;/home/hafizzuddin/github_repo/security_portfolio/02-simulations/fault_injector.py&quot;, line 150, in run_trials
+    out = self.target_fn(injected_input)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &quot;/home/hafizzuddin/github_repo/security_portfolio/02-simulations/fault_injector.py&quot;, line 31, in process_packet
+    raise ValueError(&quot;non-printable byte detected&quot;)
+ValueError: non-printable byte detected
+ input_b64=</li>
+<li>seed=507621088 outcome=exception exception=Traceback (most recent call last):
+  File &quot;/home/hafizzuddin/github_repo/security_portfolio/02-simulations/fault_injector.py&quot;, line 150, in run_trials
+    out = self.target_fn(injected_input)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &quot;/home/hafizzuddin/github_repo/security_portfolio/02-simulations/fault_injector.py&quot;, line 31, in process_packet
+    raise ValueError(&quot;non-printable byte detected&quot;)
+ValueError: non-printable byte detected
+ input_b64=</li>
+<li>seed=357150385 outcome=exception exception=Traceback (most recent call last):
+  File &quot;/home/hafizzuddin/github_repo/security_portfolio/02-simulations/fault_injector.py&quot;, line 150, in run_trials
+    out = self.target_fn(injected_input)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &quot;/home/hafizzuddin/github_repo/security_portfolio/02-simulations/fault_injector.py&quot;, line 31, in process_packet
+    raise ValueError(&quot;non-printable byte detected&quot;)
+ValueError: non-printable byte detected
+ input_b64=</li>
+</ul>
+<h3>corrupt-range-3</h3><ul>
+<li>seed=161584944 outcome=exception exception=Traceback (most recent call last):
+  File &quot;/home/hafizzuddin/github_repo/security_portfolio/02-simulations/fault_injector.py&quot;, line 150, in run_trials
+    out = self.target_fn(injected_input)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &quot;/home/hafizzuddin/github_repo/security_portfolio/02-simulations/fault_injector.py&quot;, line 31, in process_packet
+    raise ValueError(&quot;non-printable byte detected&quot;)
+ValueError: non-printable byte detected
+ input_b64=</li>
+<li>seed=320091645 outcome=exception exception=Traceback (most recent call last):
+  File &quot;/home/hafizzuddin/github_repo/security_portfolio/02-simulations/fault_injector.py&quot;, line 150, in run_trials
+    out = self.target_fn(injected_input)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &quot;/home/hafizzuddin/github_repo/security_portfolio/02-simulations/fault_injector.py&quot;, line 31, in process_packet
+    raise ValueError(&quot;non-printable byte detected&quot;)
+ValueError: non-printable byte detected
+ input_b64=</li>
+<li>seed=77369839 outcome=exception exception=Traceback (most recent call last):
+  File &quot;/home/hafizzuddin/github_repo/security_portfolio/02-simulations/fault_injector.py&quot;, line 150, in run_trials
+    out = self.target_fn(injected_input)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &quot;/home/hafizzuddin/github_repo/security_portfolio/02-simulations/fault_injector.py&quot;, line 31, in process_packet
+    raise ValueError(&quot;non-printable byte detected&quot;)
+ValueError: non-printable byte detected
+ input_b64=</li>
+<li>seed=792885292 outcome=exception exception=Traceback (most recent call last):
+  File &quot;/home/hafizzuddin/github_repo/security_portfolio/02-simulations/fault_injector.py&quot;, line 150, in run_trials
+    out = self.target_fn(injected_input)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &quot;/home/hafizzuddin/github_repo/security_portfolio/02-simulations/fault_injector.py&quot;, line 31, in process_packet
+    raise ValueError(&quot;non-printable byte detected&quot;)
+ValueError: non-printable byte detected
+ input_b64=</li>
+<li>seed=318028987 outcome=exception exception=Traceback (most recent call last):
+  File &quot;/home/hafizzuddin/github_repo/security_portfolio/02-simulations/fault_injector.py&quot;, line 150, in run_trials
+    out = self.target_fn(injected_input)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &quot;/home/hafizzuddin/github_repo/security_portfolio/02-simulations/fault_injector.py&quot;, line 31, in process_packet
+    raise ValueError(&quot;non-printable byte detected&quot;)
+ValueError: non-printable byte detected
+ input_b64=</li>
+</ul>
+<h3>null-input</h3><ul>
+<li>seed=182097028 outcome=exception exception=Traceback (most recent call last):
+  File &quot;/home/hafizzuddin/github_repo/security_portfolio/02-simulations/fault_injector.py&quot;, line 150, in run_trials
+    out = self.target_fn(injected_input)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &quot;/home/hafizzuddin/github_repo/security_portfolio/02-simulations/fault_injector.py&quot;, line 24, in process_packet
+    raise ValueError(&quot;pkt_bytes is None&quot;)
+ValueError: pkt_bytes is None
+ input_b64=</li>
+<li>seed=609426664 outcome=exception exception=Traceback (most recent call last):
+  File &quot;/home/hafizzuddin/github_repo/security_portfolio/02-simulations/fault_injector.py&quot;, line 150, in run_trials
+    out = self.target_fn(injected_input)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &quot;/home/hafizzuddin/github_repo/security_portfolio/02-simulations/fault_injector.py&quot;, line 24, in process_packet
+    raise ValueError(&quot;pkt_bytes is None&quot;)
+ValueError: pkt_bytes is None
+ input_b64=</li>
+<li>seed=719811309 outcome=exception exception=Traceback (most recent call last):
+  File &quot;/home/hafizzuddin/github_repo/security_portfolio/02-simulations/fault_injector.py&quot;, line 150, in run_trials
+    out = self.target_fn(injected_input)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &quot;/home/hafizzuddin/github_repo/security_portfolio/02-simulations/fault_injector.py&quot;, line 24, in process_packet
+    raise ValueError(&quot;pkt_bytes is None&quot;)
+ValueError: pkt_bytes is None
+ input_b64=</li>
+<li>seed=200547477 outcome=exception exception=Traceback (most recent call last):
+  File &quot;/home/hafizzuddin/github_repo/security_portfolio/02-simulations/fault_injector.py&quot;, line 150, in run_trials
+    out = self.target_fn(injected_input)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &quot;/home/hafizzuddin/github_repo/security_portfolio/02-simulations/fault_injector.py&quot;, line 24, in process_packet
+    raise ValueError(&quot;pkt_bytes is None&quot;)
+ValueError: pkt_bytes is None
+ input_b64=</li>
+<li>seed=504376471 outcome=exception exception=Traceback (most recent call last):
+  File &quot;/home/hafizzuddin/github_repo/security_portfolio/02-simulations/fault_injector.py&quot;, line 150, in run_trials
+    out = self.target_fn(injected_input)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &quot;/home/hafizzuddin/github_repo/security_portfolio/02-simulations/fault_injector.py&quot;, line 24, in process_packet
+    raise ValueError(&quot;pkt_bytes is None&quot;)
+ValueError: pkt_bytes is None
+ input_b64=</li>
+</ul>
+<h3>timing-delay</h3><ul>
+</ul>
+<h3>forced-exception</h3><ul>
+<li>seed=199830551 outcome=exception exception=Traceback (most recent call last):
+  File &quot;/home/hafizzuddin/github_repo/security_portfolio/02-simulations/fault_injector.py&quot;, line 146, in run_trials
+    injected_input = self.apply_injection(self.baseline_input, spec, rng)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &quot;/home/hafizzuddin/github_repo/security_portfolio/02-simulations/fault_injector.py&quot;, line 127, in apply_injection
+    raise RuntimeError(&quot;injected exception&quot;)
+RuntimeError: injected exception
+ input_b64=</li>
+<li>seed=631866098 outcome=exception exception=Traceback (most recent call last):
+  File &quot;/home/hafizzuddin/github_repo/security_portfolio/02-simulations/fault_injector.py&quot;, line 146, in run_trials
+    injected_input = self.apply_injection(self.baseline_input, spec, rng)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &quot;/home/hafizzuddin/github_repo/security_portfolio/02-simulations/fault_injector.py&quot;, line 127, in apply_injection
+    raise RuntimeError(&quot;injected exception&quot;)
+RuntimeError: injected exception
+ input_b64=</li>
+<li>seed=475874654 outcome=exception exception=Traceback (most recent call last):
+  File &quot;/home/hafizzuddin/github_repo/security_portfolio/02-simulations/fault_injector.py&quot;, line 146, in run_trials
+    injected_input = self.apply_injection(self.baseline_input, spec, rng)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &quot;/home/hafizzuddin/github_repo/security_portfolio/02-simulations/fault_injector.py&quot;, line 127, in apply_injection
+    raise RuntimeError(&quot;injected exception&quot;)
+RuntimeError: injected exception
+ input_b64=</li>
+<li>seed=868444803 outcome=exception exception=Traceback (most recent call last):
+  File &quot;/home/hafizzuddin/github_repo/security_portfolio/02-simulations/fault_injector.py&quot;, line 146, in run_trials
+    injected_input = self.apply_injection(self.baseline_input, spec, rng)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &quot;/home/hafizzuddin/github_repo/security_portfolio/02-simulations/fault_injector.py&quot;, line 127, in apply_injection
+    raise RuntimeError(&quot;injected exception&quot;)
+RuntimeError: injected exception
+ input_b64=</li>
+<li>seed=522493857 outcome=exception exception=Traceback (most recent call last):
+  File &quot;/home/hafizzuddin/github_repo/security_portfolio/02-simulations/fault_injector.py&quot;, line 146, in run_trials
+    injected_input = self.apply_injection(self.baseline_input, spec, rng)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &quot;/home/hafizzuddin/github_repo/security_portfolio/02-simulations/fault_injector.py&quot;, line 127, in apply_injection
+    raise RuntimeError(&quot;injected exception&quot;)
+RuntimeError: injected exception
+ input_b64=</li>
+</ul>
+</body></html>
