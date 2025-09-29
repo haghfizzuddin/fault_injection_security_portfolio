@@ -1,30 +1,29 @@
-### Fault Injection Simulation — What I learned
+# Fault Injection Simulation — What I learned
 
-This repo is my hands-on fault-injection playground. I used a small, reproducible harness to mutate a known-good input (bit flips, small corruptions, None, delays) and exercised my process_packet function to find silent corruptions. I reproduced failing cases deterministically, added defensive checks, turned failures into fixtures + pytest tests, and verified the fix.
+- This repo is my hands-on fault-injection playground. I used a small, reproducible harness to mutate a known-good input (bit flips, small corruptions, None, delays) and exercised my process_packet function to find silent corruptions. I reproduced failing cases deterministically, added defensive checks, turned failures into fixtures + pytest tests, and verified the fix.
 ---
 
-## TL;DR 
+### TL;DR 
 
-I found a one-byte corruption that made my code return a wrong value silently, reproduced that exact corrupted input by seed, added a validation that rejects it, and locked the fix with a regression test.
+- I found a one-byte corruption that made my code return a wrong value silently, reproduced that exact corrupted input by seed, added a validation that rejects it, and locked the fix with a regression test.
 ---
 
-## What I learned
-
-**What fault injection is**: intentionally corrupting inputs to simulate hardware/transmission faults.
-
-# How outcomes map to risk:
-**pass** — mutated input produced the same output (good).
-**incorrect** — mutated input produced a different output without an error (dangerous; needs action).
-**exception** — mutated input raised an error (detectable; usually preferable).
-
+### What I learned
 * How to reproduce failures deterministically using RNG seeds the harness records.
 * How to triage a failing seed: decode mutated bytes, inspect which byte(s) changed, decide a defensive fix.
 * How to convert failing inputs into fixtures + pytest tests so the issue cannot silently reappear.
 * How to run the harness in an isolated .venv to avoid unrelated pytest plugin issues.
 
+**What is fault injection?** It is of the act on intentionally corrupting inputs to simulate hardware/transmission faults.
+
+## How outcomes map to risk:
+- **pass** — mutated input produced the same output (good).
+- **incorrect** — mutated input produced a different output without an error (dangerous; needs action).
+- **exception** — mutated input raised an error (detectable; usually preferable).
+---
 
 ## Repo layout
-
+```
 .
 ├─ README.md
 ├─ fault_injector.py                  # harness + example target (process_packet)
@@ -38,33 +37,33 @@ I found a one-byte corruption that made my code return a wrong value silently, r
 │  ├─ generate_tests_from_fixtures.py # generates pytest files per fixture (includes sys.path shim)
 │  └─ apply_defensive_patch.py        # (optional) inserts defensive checks into fault_injector.py
 └─ .venv/                             # optional virtualenv for isolation
+```
 ---
 
 Quick start (commands I used)
 
 > (recommended: run inside .venv so global packages/plugins don't interfere)
 
-# create & activate venv (optional but recommended)
+# Create & activate venv (optional but recommended)
 ```bash
 python -m venv .venv
 source .venv/bin/activate
 ```
 
-# install pytest (only needed for running tests)
+# Install pytest (only needed for running tests)
 ```bash
 pip install --upgrade pip
 pip install pytest
 ```
 
-# run the harness (100 trials per spec)
+# Run the harness (100 trials per spec)
 ```bash
 python3 fault_injector.py --outdir reports --trials 100 --seed 42
 ```
 
-# open outputs:
-# - reports/results.csv  (one row per trial)
-# - reports/summary.html (per-spec summary)
-
+# Open outputs:
+- reports/results.csv  (one row per trial)
+- reports/summary.html (per-spec summary)
 ---
 
 ## Full flow (what happens when I run the harness)
@@ -86,7 +85,7 @@ python3 fault_injector.py --outdir reports --trials 100 --seed 42
 ```bash
 python3 fault_injector.py --reproduce --spec "1-bit-flip" --trial-seed 239081663 --outdir reports
 ```
-# output file -> reports/reproductions/1-bit-flip_seed_239081663.bin
+> Output file -> reports/reproductions/1-bit-flip_seed_239081663.bin
 3. Inspect the mutated binary:
 ```bash
 xxd reports/reproductions/1-bit-flip_seed_239081663.bin | sed -n '1,4p'
@@ -127,34 +126,29 @@ def process_packet(pkt_bytes: bytes) -> int:
 
 I use the scripts in tools/:
 
-tools/extract_and_reproduce.py
+*tools/extract_and_reproduce.py*
 - Reads reports/results.csv and collects the top N incorrect seeds (first-occurrence order) and runs the harness --reproduce for each seed. It copies the reproduced binaries into tests/fixtures/.
-
-tools/generate_tests_from_fixtures.py
+*tools/generate_tests_from_fixtures.py*
 - Scans tests/fixtures/ for 1-bit-flip_seed_*.bin entries and writes one pytest file per fixture into tests/generated_fi_tests/. Each generated test includes a sys.path shim so from fault_injector import process_packet works without tweaking PYTHONPATH.
-
-tools/apply_defensive_patch.py (optional)
+*tools/apply_defensive_patch.py* (optional)
 - Small helper that inserts the defensive validation into fault_injector.py if it’s not already present (it backups the original file).
 
 
-##Example automation workflow I ran:
+## Example automation workflow I ran:
 
-# extract and reproduce top 10 incorrect seeds
+- Extract and reproduce top 10 incorrect seeds
 ```bash
 python3 tools/extract_and_reproduce.py --csv reports/results.csv --n 10 --outdir reports
 ```
-
-# generate pytest files from the fixtures
+- Generate pytest files from the fixtures
 ```bash
 python3 tools/generate_tests_from_fixtures.py
 ```
-
-# (optionally) apply the defensive patch automatically
+- (Optionally) apply the defensive patch automatically
 ```bash
 python3 tools/apply_defensive_patch.py
 ```
-
-# run generated tests
+- run generated tests
 ```bash
 pytest -q tests/generated_fi_tests
 ```
@@ -176,10 +170,7 @@ If pytest errors with ModuleNotFoundError: No module named 'fault_injector', run
 PYTHONPATH=. pytest -q tests/generated_fi_tests
 ```
 
-or ensure tests include the small sys.path shim (the generator does this).
-
 If pytest fails to import unrelated plugins, create a fresh virtualenv and install only pytest:
-
 ```bash
 python -m venv .venv
 source .venv/bin/activate
@@ -196,7 +187,7 @@ echo 'BASE64STRING' | base64 --decode > mutated.bin
 1. Use tools/extract_and_reproduce.py to collect and reproduce the top 20 incorrect seeds across specs.
 2. Harden process_packet with protocol-aware validation (field checks, CRC/HMAC).
 3. Add generated tests to CI and fail builds if regressions allow known corrupted inputs to be accepted.
-4. Keep a fi-regressions/ document that lists seeds, their cause, and fix status.
+4. Keep a FI-regressions/ document that lists seeds, their cause, and fix status.
 ---
 
 ## Appendix: default injection specs
