@@ -17,12 +17,12 @@ Having worked with SCADA/ICS systems and critical infrastructure, I've witnessed
 - Attack Taxonomy - Voltage, Clock, EM, and Laser techniques
 - Real-World Impact - Why FI evaluation matters
 
-**2. Simulations - Learning**
+**2. Simulations - Learning (Updates incoming)**
 - PIN Bypass Simulator - Demonstrates timing attacks on authentication
 - Glitch Parameter Sweep - Explores glitch width vs success rate
 - AES Fault Attack - Differential Fault Analysis simulation
 
-**3. Hardware Concepts - Learning**
+**3. Hardware Concepts - Learning (Updates incoming)**
 - Arduino Glitch Controller - Conceptual voltage glitcher
 - Python Automation - Test scripting for iterative attacks
 - Setup Documentation - Understanding evaluation lab requirements
@@ -52,9 +52,9 @@ Planned: Practical experience with ChipWhisperer-Lite, Formal evaluation methodo
 Through this self-study, I've learned that successful fault injection requires systematic methodology (not random attempts, but structured parameter exploration), pattern recognition (identifying vulnerable code patterns and timing windows), statistical rigor (distinguishing true vulnerabilities from noise), and clear reporting (translating technical findings for diverse stakeholders).
 
 
-## Next Steps
+## Future Enrichment
 
-While these simulations provide theoretical understanding, I'm eager to work with real fault injection equipment, learn from experienced evaluators, contribute to advancing FI evaluation methodologies, and apply these techniques to secure real-world products.
+While these simulations I'm learning provide theoretical understanding, I'm eager to work with real fault injection equipment, learn from experienced evaluators, contribute to advancing FI evaluation methodologies, and apply these techniques to secure real-world products.
 
 ## Contact
 
