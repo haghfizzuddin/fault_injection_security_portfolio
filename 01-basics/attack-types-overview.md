@@ -151,7 +151,8 @@ Academic and practical work documents DFA combined with side-channel templates; 
 
 ---
 
-## Short further-reading (start here) 
+## Short further-reading
+
 - ChipWhisperer tutorials — practical voltage-glitch labs and step-by-step PoCs.
 - Laser/LLFI practical studies — examples of laser attacks on signature verification.
 
