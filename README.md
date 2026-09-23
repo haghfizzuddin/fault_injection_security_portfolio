@@ -1,66 +1,52 @@
-# Fault Injection Security Research Portfolio
+# Fault Injection Evaluation — Methodology Study
 
-A collection of fault injection concepts, simulations, and demonstrations developed to explore hardware security evaluation techniques.
+Simulations, analysis methods and a sample evaluation report, built to work through how a fault-injection evaluation is planned, run, measured and reported.
 
-## Overview
+## Background
 
-This repository documents my self-directed study into fault injection attacks and countermeasures, building upon my electronics engineering background and security research experience. While I'm new to formal fault injection evaluation, these projects demonstrate my understanding of core concepts and readiness to learn advanced techniques.
+I trained as an electronic engineer and spent two years in regulated explosives manufacturing. Part of that job was injecting controlled faults into instrumentation loops (4–20 mA current and voltage injection) to check that sensors responded correctly and that the system failed safe. I also documented how voltage fluctuation and electromagnetic interference showed up in system behaviour.
 
-## Motivation
+That was fault-condition testing for safety. This repository asks the security version of the same question: what an attacker gains by pushing a device outside its operating conditions on purpose, and how an evaluator measures and reports it. The work here is simulation-based. It doesn't include glitching real silicon.
 
-Having worked with SCADA/ICS systems and critical infrastructure, I've witnessed firsthand how hardware faults can compromise entire systems. This portfolio bridges my hardware engineering foundation with security evaluation methodologies.
-
-## Repository Structure
+## What's here
 
 **1. Fundamentals**
-- Fault Injection Theory - Overview of FI attack principles
-- Attack Taxonomy - Voltage, Clock, EM, and Laser techniques
-- Real-World Impact - Why FI evaluation matters
+- Fault-injection principles and an attack taxonomy: voltage, clock, EM and laser
+- Real-world impact: why fault-injection evaluation matters
 
-**2. Simulations - Learning (Updates incoming)**
-- PIN Bypass Simulator - Demonstrates timing attacks on authentication
-- Glitch Parameter Sweep - Explores glitch width vs success rate
-- AES Fault Attack - Differential Fault Analysis simulation
+**2. Simulations** (Python, NumPy, Matplotlib, Jupyter)
+- **PIN-bypass simulator:** how a timing-window fault skips an authentication check
+- **Glitch parameter sweep:** glitch width and offset against success rate, i.e. the structured search an evaluator runs instead of random attempts
+- **AES differential fault analysis:** recovering key material from faulty ciphertexts
 
-**3. Hardware Concepts - Learning (Updates incoming)**
-- Arduino Glitch Controller - Conceptual voltage glitcher
-- Python Automation - Test scripting for iterative attacks
-- Setup Documentation - Understanding evaluation lab requirements
+**3. Bench concepts**
+- Arduino-based voltage-glitch controller (design concept)
+- Python automation for iterative test runs
+- Notes on evaluation-lab setup requirements
 
-**4. Analysis & Reporting**
-- Sample Evaluation Report - Mock security evaluation
-- Statistical Analysis - Success rate analysis methods
-- Countermeasure Assessment - Evaluating protection mechanisms
+**4. Analysis and reporting**
+- **Sample evaluation report**, structured as a lab would deliver one
+- **Statistical analysis**, separating true fault effects from noise
+- **Countermeasure assessment**, judging whether a protection held
 
-## Technologies Used
+## Method
 
-Languages: Python, C/Arduino, JavaScript
-Analysis: NumPy, Matplotlib, Jupyter
-Concepts: Power analysis, Timing attacks, Differential Fault Analysis
-Background: SCADA/ICS, Embedded Systems, Critical Infrastructure
+Four things run through every part of this repository:
+- **Structured parameter exploration**, not random attempts
+- **Identifying vulnerable code patterns and timing windows**
+- **Statistical rigour** to tell a real effect from noise
+- **Reporting** that a third party can follow and reproduce
 
-## Learning Path
+## Next steps
 
-In Progress: ChipWhisperer tutorials (theory sections), "The Hardware Hacker's Handbook" (Chapters 1-3),
+- Move from simulation to hardware: ChipWhisperer-Lite and the voltage-glitch tutorials on a real target
+- EM fault injection theory
+- ISO/IEC 17825 (testing methods for non-invasive attack mitigation)
 
-In Progress: Advanced glitching techniques, EM fault injection theory, ISO/IEC 17825 standard review
+## Tools
 
-Planned: Practical experience with ChipWhisperer-Lite, Formal evaluation methodology training, Advanced countermeasure analysis
-
-## Key Insights
-
-Through this self-study, I've learned that successful fault injection requires systematic methodology (not random attempts, but structured parameter exploration), pattern recognition (identifying vulnerable code patterns and timing windows), statistical rigor (distinguishing true vulnerabilities from noise), and clear reporting (translating technical findings for diverse stakeholders).
-
-
-## Future Enrichment
-
-While these simulations I'm learning provide theoretical understanding, I'm eager to work with real fault injection equipment, learn from experienced evaluators, contribute to advancing FI evaluation methodologies, and apply these techniques to secure real-world products.
+Python, C/Arduino, NumPy, Matplotlib, Jupyter
 
 ## Contact
 
-Hafizzuddin Hashim
-Email: hafizzuddinfahmi@gmail.com
-LinkedIn: linkedin.com/in/hafizzuddin-hashim
-Location: Kuala Lumpur, Malaysia 
-
-This portfolio demonstrates foundational knowledge in fault injection concepts. I'm actively seeking opportunities to formalize this knowledge through hands-on evaluation experience and professional training.
+Hafizzuddin Hashim · hafizzuddinfahmi@gmail.com · linkedin.com/in/hafizzuddin-hashim · Kuala Lumpur, Malaysia
